@@ -1,0 +1,337 @@
+@use "sass:color";
+@use "./fonts";
+@use "./base";
+@use "./buttons";
+@use "./icons";
+@use "./links";
+@use "./flash-messages";
+@use "./dashboard";
+@use "./profile";
+
+.main {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 70rem;
+}
+
+.header {
+    width: 100%;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: color.scale($color: #f5f5f5, $lightness: -10%);
+
+    display: flex;
+    justify-content: space-between;
+
+    &__app-home-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &__app-title {
+        color: #1b1e21;
+
+        &:hover {
+            color: #383d41;
+        }
+    }
+
+    &__app-subtitle {
+        color: #1b1e21;
+    }
+
+    &__app-navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.8rem;
+        margin-top: 1rem;
+    }
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.user {
+    position: relative;
+
+    .dropdown {
+        position: absolute;
+        right: 1rem;
+        top: 3rem;
+
+
+        &__list {
+            background-color: #f5f5f5;
+            border: .1rem solid #383d41;
+            border-radius: .4rem;
+            width: fit-content;
+            padding: 1rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: .4rem;
+
+            &__item {
+                padding: 1rem;
+            }
+        }
+    }
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 1rem;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+
+        &__menu {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+
+            &__controls {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &__actions {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+    }
+
+    &__content {
+        width: 100%;
+    }
+}
+
+.search {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &__form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    &__input {
+        flex-grow: 1;
+        display: inline-block;
+        padding: 0.5rem;
+        border: none;
+        outline: none;
+        background-color: #fff;
+        color: #1b1e21;
+        font-size: 1.2rem;
+        font-weight: 500;
+        border: 0.1rem solid #383d41;
+        border-radius: 0.5rem;
+
+        &:focus {
+            outline: 0.1rem solid #1b1e21;
+        }
+
+        @media screen and (min-width: 512px) {
+            padding: 1rem;
+            font-size: 1.4rem;
+        }
+    }
+
+    &__button {
+        padding: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
+
+.stats {
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.tasks {
+    &__checkmark {
+        color: #218838;
+        font-size: 1.8rem;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #dddddd;
+            border-radius: 0.5rem;
+            font-size: 1.4rem;
+
+            &--completed {
+                text-decoration: line-through;
+            }
+
+            a {
+                width: 100%;
+                height: 100%;
+                color: #232323;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.task {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__title {
+        font-size: 3rem;
+        margin-bottom: 0.4rem;
+    }
+
+    &__date {
+        margin-bottom: 2rem;
+
+        * {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__description {
+        font-size: 1.8rem;
+        margin-bottom: 0.6rem;
+    }
+
+    &__long-description {
+        font-size: 1.4rem;
+    }
+    &__delete-area {
+        margin-top: 2rem;
+    }
+}
+
+.form-group {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .form-control {
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-error {
+        margin-bottom: 1rem;
+        color: #dc3545;
+        font-size: 1.2rem;
+    }
+
+    .form-warning {
+        margin-bottom: 1rem;
+        color: #ffc107;
+        font-size: 1.2rem;
+    }
+
+    .form-message {
+        margin-bottom: 1rem;
+        color: #1b1e21;
+        font-size: 1.2rem;
+    }
+
+    .form-success {
+        margin-bottom: 1rem;
+        color: #28a745;
+        font-size: 1.2rem;
+    }
+}
+
+.tasks-pagination {
+    width: 100%;
+    padding: 1rem;
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+
+    &__prev {
+        justify-self: flex-start;
+    }
+
+    &__next {
+        justify-self: flex-end;
+        align-self: flex-end;
+    }
+
+    &__pages {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.footer {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    background-color: color.scale($color: #f5f5f5, $lightness: -10%);
+    width: 100%;
+
+    &__copy {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__text {
+        font-size: 1.2rem;
+    }
+}

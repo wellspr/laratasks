@@ -1,0 +1,70 @@
+.flash-message {
+    position: absolute;
+    top: 0;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+
+    &--error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    &--success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    &--info {
+        background-color: #d1ecf1;
+        color: #0c5460;
+    }
+
+    &--warning {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    &--danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    &--primary {
+        background-color: #cce5ff;
+        color: #004085;
+    }
+
+    &--secondary {
+        background-color: #e2e3e5;
+        color: #383d41;
+    }
+
+    &--light {
+        background-color: #fefefe;
+        color: #818182;
+    }
+
+    &--dark {
+        background-color: #d6d8d9;
+        color: #1b1e21;
+    }
+
+    &--link {
+        background-color: #f0f0f0;
+        color: #007bff;
+    }
+
+    &--hidden {
+        display: none;
+    }
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}

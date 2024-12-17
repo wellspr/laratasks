@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.header__app-home-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header__app-title {
+    font-family: 'Space Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem; /*2.2rem;*/
+    line-height: 1;
+}
+
+.header__app-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: .8rem/* 1.2rem; */
+}
