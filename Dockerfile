@@ -43,9 +43,14 @@ RUN chown -R www-data:www-data /var/www/html
 
 RUN docker-php-ext-install mbstring
 
-COPY .env.docker .env
+COPY .env .env
 RUN php artisan key:generate
 RUN php artisan migrate
+RUN php artisan optimize
+RUN php artisan config:cache
+RUN php artisan events:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
 
 RUN node --version
 RUN npm --version
