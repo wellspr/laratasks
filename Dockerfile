@@ -1,7 +1,9 @@
 #Dockerfile Example on running PHP Laravel app using Apache web server
 
-FROM node:latest AS node
 FROM php:8.3-apache
+
+# --> https://stackoverflow.com/a/63108753/11704817 (Showed how to use node docker image directly)
+FROM node:latest AS node
 
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
@@ -9,9 +11,11 @@ RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 # Install necessary libraries
 RUN apt-get update && apt-get install -y \
-    libonig-dev \
-    libzip-dev \
-    libpq-dev
+libonig-dev \
+libzip-dev
+
+# --> https://github.com/docker-library/php/issues/221#issuecomment-254153971 (Solved how to add postgres support)
+RUN apt-get install -y libpq-dev
 
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 
