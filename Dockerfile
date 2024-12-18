@@ -44,8 +44,8 @@ RUN chown -R www-data:www-data /var/www/html
 RUN docker-php-ext-install mbstring
 
 # uncomment next line to run locally
-COPY .env .env
-#COPY .env.example .env
+#COPY .env .env
+COPY .env.example .env
 
 RUN php artisan key:generate
 #RUN php artisan migrate
