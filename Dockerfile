@@ -50,10 +50,6 @@ COPY .env.example .env
 RUN php artisan key:generate
 RUN php artisan migrate
 RUN php artisan optimize
-RUN php artisan config:cache
-RUN php artisan event:cache
-RUN php artisan route:cache
-RUN php artisan view:cache
 
 RUN node --version
 RUN npm --version
