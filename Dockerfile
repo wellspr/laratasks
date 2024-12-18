@@ -1,6 +1,11 @@
 #Dockerfile Example on running PHP Laravel app using Apache web server
 
+FROM node:latest AS node
 FROM php:8.3-apache
+
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 
 # Install necessary libraries
 RUN apt-get update && apt-get install -y \
@@ -37,6 +42,11 @@ RUN docker-php-ext-install mbstring
 COPY .env.docker .env
 RUN php artisan key:generate
 RUN php artisan migrate
+
+RUN node --version
+RUN npm --version
+RUN npm install
+RUN npm run build
 
 # Expose port 80
 EXPOSE 80
