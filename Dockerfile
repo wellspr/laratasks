@@ -62,8 +62,8 @@ ENV APP_NAME=${APP_NAME}
 ENV APP_KEY=${APP_KEY}
 ENV DB_CONNECTION=${DB_CONNECTION}
 
-RUN php artisan key:generate
-RUN php artisan migrate
+#RUN php artisan key:generate
+#RUN php artisan migrate
 RUN php artisan optimize
 
 RUN node --version
