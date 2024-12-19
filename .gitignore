@@ -7,11 +7,12 @@
 /storage/pail
 /vendor
 .env
-.env.docker
+.env.local
 .env.backup
 .env.production
 .phpactor.json
 .phpunit.result.cache
+Dockerfile.local
 Homestead.json
 Homestead.yaml
 auth.json

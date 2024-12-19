@@ -44,11 +44,26 @@ RUN chown -R www-data:www-data /var/www/html
 RUN docker-php-ext-install mbstring
 
 # uncomment next line to run locally
-#COPY .env .env
-COPY .env.example .env
+#COPY .env.example .env
+
+ARG APP_ENV=production
+ARG APP_URL
+ARG ASSET_URL
+ARG DB_URL
+ARG APP_NAME
+ARG APP_KEY
+ARG DB_CONNECTION
+
+ENV APP_ENV=${APP_ENV}
+ENV APP_URL=${APP_URL}
+ENV ASSET_URL=${ASSET_URL}
+ENV DB_URL=${DB_URL}
+ENV APP_NAME=${APP_NAME}
+ENV APP_KEY=${APP_KEY}
+ENV DB_CONNECTION=${DB_CONNECTION}
 
 RUN php artisan key:generate
-#RUN php artisan migrate
+RUN php artisan migrate
 RUN php artisan optimize
 
 RUN node --version
