@@ -15,23 +15,25 @@ class ManageFilteringState
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->route()->named('tasks.index.all')) {
+
+        if ($request->route()->named('tasks.list.all')) {
 
             session(['filter' => 'all', 'search' => null]);
 
-        } elseif ($request->route()->named('tasks.index.completed')) {
+        } elseif ($request->route()->named('tasks.list.completed')) {
 
             session(['filter' => 'completed', 'search' => null]);
 
-        } else if ($request->route()->named('tasks.index.search')) {
+        } else if ($request->route()->named('tasks.list.search')) {
 
             session(['filter' => null, 'search' => $request->input('term')]);
 
-        } else if ($request->route()->named('tasks.index')) {
+        } else if ($request->route()->named('tasks.list')) {
 
             session(['filter' => null, 'search' => null]);
 
         }
+
         return $next($request);
     }
 }
